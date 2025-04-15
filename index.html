@@ -1,122 +1,252 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Underverse</title>
-  <!-- Atualizando o favicon com a imagem fornecida -->
-  <link rel="icon" type="image/png" href="https://i.scdn.co/image/ab67616d00001e02c0b304dd5226e1eed7abc93a">
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@3/tsparticles.bundle.min.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DARLING IN THE FRANXX</title>
   <style>
-    .personagem-container {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      gap: 40px;
+    :root {
+      --vermelho: #ff004c;
+      --preto: #111;
+      --rosa: #ff86c8;
+      --fundo-opaco: rgba(255, 255, 255, 0.8);
     }
-    .personagem {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      max-width: 300px; /* Tamanho máximo para as caixas */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
     }
-    .personagem img {
-      max-width: 100%; /* Ajusta a imagem para o tamanho máximo da caixa */
-      height: auto; /* Mantém a proporção das imagens */
-      margin-bottom: 15px;
+    html, body {
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-    .personagem p {
-      color: #9b00d9;
+    body {
+      background: url(https://i.pinimg.com/originals/e2/d3/24/e2d324d8c3c07a40051aefff832f2e93.gif) no-repeat center center fixed;
+      background-size: cover;
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 15px 0;
+      z-index: 1000;
       text-align: center;
-      font-size: 14px;
+    }
+    nav a {
+      color: #fff;
+      margin: 0 20px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: var(--vermelho);
+    }
+    .hero {
+      position: relative;
+      height: 100vh;
+      background: url('https://i.pinimg.com/originals/1d/50/7a/1d507ad3deefcbb36d1620d6c21043ef.jpg') no-repeat center center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero h1 {
+      font-size: 4rem;
+      color: var(--vermelho);
+      text-shadow: 0 0 10px #fff, 0 0 20px var(--vermelho);
+      animation: slideIn 2s ease-out, glow 2s infinite alternate;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 20px 40px;
+      border-radius: 15px;
+    }
+    section {
+      padding: 100px 20px;
+      min-height: 100vh;
+      background-color: rgba(0, 0, 0, 0.85);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2.5rem;
+      color: var(--vermelho);
+    }
+    section p {
+      color: var(--preto);
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      background: var(--fundo-opaco);
+      padding: 15px;
+      border-radius: 10px;
+    }
+    .curiosidades-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 40px;
+    }
+    .curiosidade-box {
+      background-color: var(--fundo-opaco);
+      border-radius: 15px;
+      padding: 15px;
+      width: 250px;
+      text-align: center;
+      box-shadow: 0 0 10px var(--rosa);
+      transition: transform 0.3s ease;
+    }
+    .curiosidade-box:hover {
+      transform: translateY(-10px);
+    }
+    .curiosidade-box h3 {
+      color: var(--vermelho);
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+    .curiosidade-box img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      border: 2px solid var(--rosa);
+    }
+    .curiosidade-box p {
+      color: var(--preto);
+      font-size: 0.95rem;
+    }
+    @keyframes slideIn {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 5px #fff, 0 0 10px var(--rosa); }
+      to { text-shadow: 0 0 15px #fff, 0 0 30px var(--rosa); }
+    }
+    @media (max-width: 768px) {
+      .curiosidade-box {
+        width: 100%;
+      }
+      .hero h1 {
+        font-size: 2.5rem;
+        padding: 10px 20px;
+      }
     }
   </style>
 </head>
-<body style="font-family: Arial, sans-serif; background-color: #000000; color: #7536b5; margin: 0;">
 
-  <!-- Cabeçalho -->
-  <header style="background-color: #000000; padding: 20px; display: flex; align-items: center; justify-content: space-between;">
-    <img src="https://i.scdn.co/image/ab67616d00001e02c0b304dd5226e1eed7abc93a" alt="Underverse Logo" style="height: 60px;">
-    <nav>
-      <a href="#home" style="color: #9b00d9; margin: 0 15px; text-decoration: none;">Home</a>
-      <a href="#info" style="color: #9b00d9; margin: 0 15px; text-decoration: none;">Informações</a>
-      <a href="#curiosidades" style="color: #9b00d9; margin: 0 15px; text-decoration: none;">Curiosidades</a>
-      <a href="#personagens" style="color: #9b00d9; margin: 0 15px; text-decoration: none;">Personagens Principais</a>
-      <a href="#imagens" style="color: #9b00d9; margin: 0 15px; text-decoration: none;">Imagens</a>
-      <a href="#videos" style="color: #9b00d9; margin: 0 15px; text-decoration: none;">Vídeos</a>
-    </nav>
-  </header>
 
-  <!-- Conteúdo -->
-  <section id="home" style="padding: 40px; background-color: #000000;">
-    <h1 style="color: #9b00d9;">Bem-vindo ao Universo de Underverse</h1>
-    <p>Underverse é uma animação criada por Jakei, baseada no universo de Undertale, que explora diversas
-realidades alternativas (AUs) do jogo. A trama gira em torno de batalhas épicas entre versões alternativas de
-Sans, como Ink Sans, Error Sans e Cross Sans, cada um com habilidades e histórias próprias.</p>
+<body>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#informacoes">Informações</a>
+    <a href="#curiosidade">Curiosidade</a>
+    <a href="#personagens">Personagens</a>
+    <a href="#imagem">Imagem</a>
+    <a href="#videos">Vídeos</a>
+  </nav>
+
+  <div class="hero" id="home">
+    <h1>DARLING</h1>
+  </div>
+
+  <section id="informacoes">
+    <h2>Informações</h2>
+    <p>Darling in the Franxx (ダーリン・イン・ザ・フランキス, Dārin In Za Furankisu), abreviado como DarliFra (ダリフラ, DariFura) é um anime de ficção científica e romance japonês, produzido pelo CloverWorks e animado pelo estúdio Trigger junto com a A-1 Pictures. Estreou em 13 de janeiro de 2018. A série foi anunciada na Anime Expo de 2017. Uma adaptação para mangá por Kentaro Yabuki e uma série de tirinhas começaram a ser produzidas em 14 de janeiro de 2017. O anime teve distribuição internacional simultânea pelo serviço da Crunchyroll. A Funimation começou a dublar a série em 1 de fevereiro.</p>
   </section>
 
-  <section id="info" style="padding: 40px; background-color: #000000;">
-    <h2 style="color: #9b00d9;">Informações</h2>
-    <p>Underverse mostra batalhas épicas entre versões alternativas de Sans, como Ink Sans, Error Sans e Cross Sans.</p>
-    <p>Jakei criou esse universo com uma narrativa profunda sobre dor, redenção e identidade.</p>
-  </section>
-
-  <section id="curiosidades" style="padding: 40px; background-color: #000000;">
-    <h2 style="color: #9b00d9;">Curiosidades</h2>
-    <ul>
-      <li>Ink Sans age como um guardião das AUs.</li>
-      <li>Cross Sans vem de uma AU chamada XTale, também criada por Jakei.</li>
-      <li>Os episódios de Underverse podem levar meses para serem produzidos devido à animação frame-a-frame.</li>
-    </ul>
-  </section>
-
-  <!-- Personagens Principais -->
-  <section id="personagens" style="padding: 40px; background-color: #000000;">
-    <h2 style="color: #9b00d9;">Personagens Principais</h2>
-    <div class="personagem-container">
-      
-      <!-- Personagem: XGaster -->
-      <div class="personagem">
-        <img src="https://static.wikia.nocookie.net/xtaleunderverse4071/images/1/17/XGaster_%28Shared_Soul%29_-_XTale_VI.jpg/revision/latest/scale-to-width-down/250?cb=20200831224118">
-        <p>XGaster é uma versão alternativa do Gaster de Undertale, com o poder de subscrever qualquer coisa, por conta de sua alma. Ele deseja reescrever as AUs (alternative universes), pois o multiverso é uma sequência de erros que precisam ser corrigidos, e ele busca a perfeição em sua própria versão de realidade, sem se importar com os danos colaterais.</p>
+  <section id="curiosidade">
+    <h2>Curiosidades</h2>
+    <div class="curiosidades-container">
+      <div class="curiosidade-box">
+        <h3>Origem Misteriosa</h3>
+        <img src="https://i.pinimg.com/736x/8f/91/21/8f9121eb32d9fa24cab852797d32fde7.jpg" alt="Curiosidade 1" />
+        <p>Zero Two tem sangue de klaxossauro, o que a torna uma híbrida poderosa, mas também solitária.</p>
       </div>
-
-      <!-- Personagem: Sans (Undertale) -->
-      <div class="personagem">
-        <img src="https://i.imgur.com/F6X4PIg.png" alt="Sans">
-        <p>Sans do Undertale é conhecido por seu humor sarcástico e habilidades com teletransporte. Em Underverse, ele se envolve em batalhas complexas contra várias versões alternativas de si mesmo.</p>
+      <div class="curiosidade-box">
+        <h3>Marca Registrada</h3>
+        <img src="https://th.bing.com/th/id/OIP.8BRcjjolS4IuZFIbes6s1QHaE8" alt="Curiosidade 2" />
+        <p>Seu jeito de dizer "Darling" virou símbolo entre os fãs e virou até meme nas redes sociais.</p>
       </div>
-
-      <!-- Personagem: X-Event (XChara + Cross) -->
-      <div class="personagem">
-        <img src="https://i.imgur.com/zUBDnsh.png" alt="X-Event">
-        <p>X-Event foi criado quando Cross Sans se apossou da alma de X-Frisk, que continha metade da alma de XGaster e metade da alma de XChara. Após isso, ele destruiu sua AU como resultado do desequilíbrio e da fúria interna, e mais tarde foi encontrado por Nightmare Sans, que o recrutou com o objetivo de espalhar o caos e causar um terror descomunal nas linhas do tempo do multiverso.</p>
+      <div class="curiosidade-box">
+        <h3>Design Único</h3>
+        <img src="https://th.bing.com/th/id/OIP.FWp_WFFUChFKGhu2ZJu7hQHaEo" alt="Curiosidade 3" />
+        <p>Os chifres e cabelo rosa foram pensados para destacar sua origem não-humana e personalidade marcante.</p>
       </div>
-
-      <!-- Personagem: Ink Sans -->
-      <div class="personagem">
-        <img src="https://i.imgur.com/F6X4PIg.png" alt="Ink Sans">
-        <p>Ink Sans é um guardião das AUs, mantendo a ordem entre elas. Ele é um personagem vibrante e criativo, com uma forte conexão com o multiverso e a arte de criar novas realidades.</p>
+      <div class="curiosidade-box">
+        <h3>Paralelo com Contos</h3>
+        <img src="https://th.bing.com/th/id/OIP.24ymcXTgHFpw4kQUMSxaIAHaEg" alt="Curiosidade 4" />
+        <p>A história de Zero Two tem paralelos com "A Bela e a Fera" e outros contos de amor trágico.</p>
       </div>
-
+      <div class="curiosidade-box">
+        <h3>Popularidade</h3>
+        <img src="https://th.bing.com/th/id/OIP.bScN14vyUMApH245Z3noDQHaEK" alt="Curiosidade 5" />
+        <p>Ela se tornou uma das personagens mais populares dos animes dos anos 2010, com milhões de fãs no mundo todo.</p>
+      </div>
     </div>
   </section>
 
-  <section id="imagens" style="padding: 40px; background-color: #000000;">
-    <h2 style="color: #9b00d9;">Imagens</h2>
-    <img src="https://i.imgur.com/F6X4PIg.png" alt="Cross Sans" style="width: 300px; margin: 10px;">
-    <img src="https://i.imgur.com/zUBDnsh.png" alt="Ink Sans" style="width: 300px; margin: 10px;">
+  <section id="personagens">
+    <h2>Personagens</h2>
+    <div class="curiosidades-container">
+      <div class="curiosidade-box">
+        <h3>ZERO TWO</h3>
+        <img src="https://i.pinimg.com/236x/5e/30/15/5e30153b76d17935e1a8729b1cf89b1a.jpg" alt="Zero Two" />
+      </div>
+      <div class="curiosidade-box">
+        <h3>HIRO</h3>
+        <img src="https://i.pinimg.com/736x/aa/22/a5/aa22a5b609e4729c84453803815bfc19.jpg" alt="Hiro" />
+      </div>
+      <div class="curiosidade-box">
+        <h3>ICHIGO</h3>
+        <img src="https://i.pinimg.com/474x/ef/1c/a1/ef1ca11b4bf2d1dc9cbca6199fd5ebc2.jpg" alt="Ichigo" />
+      </div>
+      <div class="curiosidade-box">
+        <h3>GORO</h3>
+        <img src="https://i.pinimg.com/736x/b1/cf/4e/b1cf4e6beb5a999e105280bedc34c077.jpg" alt="Goro" />
+      </div>
+      <div class="curiosidade-box">
+        <h3>KOKORO</h3>
+        <img src="https://i.pinimg.com/originals/fd/db/3f/fddb3f18ffa0336061c0ab27e6a71e0f.jpg" alt="Kokoro" />
+      </div>
+      <div class="curiosidade-box">
+        <h3>FUTOSHI</h3>
+        <img src="https://i.pinimg.com/736x/12/15/2d/12152dcd98c4d509b5724ea1a98fb08e.jpg" alt="Futoshi" />
+      </div>
+      <div class="curiosidade-box">
+        <h3>ZOROME</h3>
+        <img src="https://thicc.mywaifulist.moe/waifus/22410/85347a6c0d47b8e5b8710d6267dc2814827c9a801959baaf5841b80288ac1318_thumb.jpeg" alt="Zorome" />
+      </div>
+      <div class="curiosidade-box">
+        <h3>MIKU</h3>
+        <img src="https://www.nautiljon.com/images/perso/00/22/miku_16222.jpg?0" alt="Miku" />
+      </div>
+      <div class="curiosidade-box">
+        <h3>MITSURU</h3>
+        <img src="https://i.pinimg.com/736x/a6/cb/be/a6cbbe73ff1ade50abff03facbf0fcd3.jpg" alt="Mitsuru" />
+      </div>
+      <div class="curiosidade-box">
+        <h3>IKUNO</h3>
+        <img src="https://i.pinimg.com/736x/06/6f/af/066faf6968a0d20d5e72aee65919d093.jpg" alt="Ikuno" />
+      </div>
+    </div>
+  </section>
+  <section id="imagem">
+    <h2>Imagem</h2>
+    <div style="text-align: center;">
+      <img src="https://usagif.com/wp-content/uploads/gify/zero-two-3.gif" alt="Zero Two" style="max-width: 50%; border-radius: 10px;" />
+    </div>
   </section>
 
-  <section id="videos" style="padding: 40px; background-color: #000000;">
-    <h2 style="color: #9b00d9;">Vídeos</h2>
-    <p>Confira um dos episódios mais famosos:</p>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/qB1I6pwxF9k" title="Underverse" frameborder="0" allowfullscreen></iframe>
+  <section id="videos">
+    <h2>Vídeos</h2>
+    <div style="text-align: center;">
+      <iframe width="560" height="315" src="" title="Zero Two" frameborder="0" allowfullscreen></iframe>
+    </div>
   </section>
-
-  <!-- Rodapé -->
-  <footer style="background-color: #000000; color: #ccc; text-align: center; padding: 20px;">
-    <p>&copy; 2025 Página criada por Calebe Gomes | Projeto escolar de HTML + CSS inline</p>
-  </footer>
-
 </body>
 </html>
 
